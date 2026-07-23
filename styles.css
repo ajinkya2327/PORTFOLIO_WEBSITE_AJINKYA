@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+    scroll-padding: 80px;
+}
+
 :root {
     --primary: maroon;
     --accent: beige;
@@ -21,6 +26,14 @@ body
     color: var(--text);
     line-height: 1.6;
 
+}
+
+.site-header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--lightblue);
+    transition: transform 0.3s ease 0.3s;
 }
 
 
@@ -332,3 +345,8 @@ section h2 ::after{
  
     }
 }
+
+.site-header.scrolled{
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+ 

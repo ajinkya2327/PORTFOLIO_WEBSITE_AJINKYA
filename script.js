@@ -1,0 +1,65 @@
+//script.js - first connection to portfolio !
+
+//1. check that JS is working
+console.log("JavaScript is connected! 🚀");
+ 
+//2. display the current year in the footer
+let footerYear = document.querySelector(".footer-year");
+if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+}
+
+//3. greeting based on the time of day
+function getGreeting(){
+    const hour = new Date().getHours();
+    if (hour < 12) {
+        return "Good morning!";
+    } else if (hour < 18) {
+        return "Good afternoon!";
+    } else {
+        return "Good evening!";
+    }
+}
+
+const herotitle = document.querySelector(".hero-section h1");
+if (herotitle) {
+    herotitle.textContent = `${getGreeting()} I'm Ajinkya S 👋`;
+}
+
+//=== MOBILE MENU TOGGLE ===
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks= document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", navLinks.classList.contains("open"));
+});
+
+//== Scroll-BASED NAVBAR STYLING ==
+const header = document.querySelector(".site-header");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+// === ACTIVE NAV LINK on scroll ===
+const section = document.querySelectorAll("section[id]");
+const navItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener('scroll', () =>{
+    let current ='';
+    sections.forEach(section =>{
+        if(window.scrollY >= section.offsetTop-100){
+            current=section.getAttribute('id');
+        }
+    })
+    navItems.forEach(link =>{
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `${current}`) {
+            link.classList.add('active');
+        }
+    })
+})
